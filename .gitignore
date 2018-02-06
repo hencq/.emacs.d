@@ -1,0 +1,10 @@
+elpa/
+*.elc
+ido.last
+backups/
+#*
+smex-items
+network-security.data
+ac-comphist.dat
+#*#
+*#
