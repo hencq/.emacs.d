@@ -9,6 +9,11 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+;; Refresh package list and install any missing packages
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
+
 ;;add lisp directory to load path; put .el files there
 (add-to-list 'load-path (expand-file-name "lisp/" user-emacs-directory))
 (add-to-list 'load-path "/usr/local/elisp/")
