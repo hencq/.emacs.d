@@ -1,10 +1,16 @@
-(defun import-beancount ()
+(defun import-beancount (file &optional name)
   "docstring"
-  (interactive)
-  (let ((file (ido-read-file-name "File to import: ")))
-    (with-output-to-temp-buffer "*import*"
-      (shell-command (concat "./import.py " file) "*import*"))
-    (pop-to-buffer "*import*")))
+  (interactive
+   (if (equal current-prefix-arg '(4))
+     (list
+      (ido-read-file-name "File to import: ")
+      (read-string "Parser name: "))
+     (list
+      (ido-read-file-name "File to import: "))))
+  (with-output-to-temp-buffer "*import*"
+    (shell-command (concat "./import.py '" file "'"
+                           (when name (concat " -n " name))) "*import*"))
+  (pop-to-buffer "*import*"))
 
 ;; Helper to insert today's date into beancount
 (defun insert-today-date ()
