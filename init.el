@@ -18,6 +18,11 @@
 (add-to-list 'load-path (expand-file-name "lisp/" user-emacs-directory))
 (add-to-list 'load-path "/usr/local/elisp/")
 
+;; Add $PATH to exec path
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+
 (require 'better-defaults)
 
 ;;enable the menu bar
