@@ -16,6 +16,7 @@
 
 ;;add lisp directory to load path; put .el files there
 (add-to-list 'load-path (expand-file-name "lisp/" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp/racket-mode" user-emacs-directory))
 (add-to-list 'load-path "/usr/local/elisp/")
 
 ;; Add $PATH to exec path
@@ -98,6 +99,16 @@
 (require 'beancount)
 (require 'beancount-helpers)
 (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode))
+
+;;Racket
+(require 'company)
+(require 'racket-mode)
+(add-hook 'racket-mode-hook 'company-mode)
+(add-hook 'racket-mode-hook (lambda ()
+                              ;; (set (make-local-variable 'eldoc-documentation-function)
+                              ;;      'racket-eldoc-function)
+                              (set (make-local-variable 'company-backends)
+                                   '((company-capf company-dabbrev-code)))))
 
 
 (require 'keybindings)
