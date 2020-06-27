@@ -1,1 +1,1 @@
-/Library/Frameworks/Python.framework/Versions/3.6/elisp/beancount.el
+/Users/keesjochem/homebrew/elisp/beancount.el
